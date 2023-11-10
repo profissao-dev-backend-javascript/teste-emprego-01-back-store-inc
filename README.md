@@ -44,6 +44,7 @@ Este projeto é uma API RESTful para gerenciar um inventário de produtos. Foi d
 ## Endpoints da API
 
 - **GET `/`**: Endpoint principal, retorna uma mensagem de boas vindas.
+- **GET `/doc`**: Documentação do projeto com Swagger.
 - **CRUD de Produtos `/product`**:
   - **GET `/product`**: Lista todos os produtos.
   - **GET `/product/:id`**: Obtém um produto pelo ID.
