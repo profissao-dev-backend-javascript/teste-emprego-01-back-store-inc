@@ -15,8 +15,9 @@ async function main() {
 
   // Main Endpoint
   app.get("/", function (req, res) {
-    // TODO: Improve
-    res.send("Hello World");
+    res.send({
+      message: "Welcome to BackStore Inc. API",
+    });
   });
 
   // Router Product
