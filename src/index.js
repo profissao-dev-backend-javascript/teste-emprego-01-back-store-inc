@@ -11,7 +11,7 @@ async function main() {
 
   app.use(express.json());
 
-  const port = 3000;
+  const port = process.env.PORT || 3000;
 
   // Main Endpoint
   app.get("/", function (req, res) {

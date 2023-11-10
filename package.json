@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "API de Gerenciamento de Inventário",
   "main": "src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node .",
     "dev": "nodemon ."
