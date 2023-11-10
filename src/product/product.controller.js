@@ -1,15 +1,15 @@
 const helper = require("./product.helper");
 const service = require("./product.service");
 
-function readAll(req, res) {
-  const items = service.readAll();
+async function readAll(req, res) {
+  const items = await service.readAll();
 
   res.send(items);
 }
 
-function readById(req, res) {
+async function readById(req, res) {
   const id = req.params.id;
-  const item = service.readById(id);
+  const item = await service.readById(id);
 
   if (!item) {
     return res.status(404).send({
@@ -20,7 +20,7 @@ function readById(req, res) {
   res.send(item);
 }
 
-function create(req, res) {
+async function create(req, res) {
   const item = req.body;
 
   const itemValidation = helper.validateItem(item);
@@ -32,12 +32,12 @@ function create(req, res) {
     });
   }
 
-  const itemAdded = service.create(item);
+  const itemAdded = await service.create(item);
 
   res.status(201).send(itemAdded);
 }
 
-function updateById(req, res) {
+async function updateById(req, res) {
   const id = req.params.id;
 
   const newItem = req.body;
@@ -51,7 +51,7 @@ function updateById(req, res) {
     });
   }
 
-  const updatedItem = service.updateById(id, newItem);
+  const updatedItem = await service.updateById(id, newItem);
 
   if (!updatedItem) {
     return res.status(404).send({
@@ -62,10 +62,10 @@ function updateById(req, res) {
   res.send(updatedItem);
 }
 
-function deleteById(req, res) {
+async function deleteById(req, res) {
   const id = req.params.id;
 
-  const isDeleted = service.deleteById(id);
+  const isDeleted = await service.deleteById(id);
 
   if (!isDeleted) {
     return res.status(404).send({

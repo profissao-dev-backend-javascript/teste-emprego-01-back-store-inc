@@ -1,20 +1,52 @@
-function readAll() {
-  return [];
+const { ObjectId } = require("mongodb");
+const { getDatabase } = require("../db/database.helper");
+
+function getCollection() {
+  return getDatabase().collection("products");
 }
 
-function readById(id) {
-  return id;
+async function readAll() {
+  const items = await getCollection().find().toArray();
+
+  return items;
 }
 
-function create(item) {
+async function readById(id) {
+  const item = await getCollection().findOne({
+    _id: new ObjectId(id),
+  });
+
   return item;
 }
 
-function updateById(id, item) {
+async function create(item) {
+  await getCollection().insertOne(item);
+
+  return item;
+}
+
+async function updateById(id, item) {
+  const updateResult = await getCollection().updateOne(
+    { _id: new ObjectId(id) },
+    { $set: item }
+  );
+
+  if (updateResult.modifiedCount === 0) {
+    return;
+  }
+
   return { id, ...item };
 }
 
-function deleteById(id) {
+async function deleteById(id) {
+  const deleteResult = await getCollection().deleteOne({
+    _id: new ObjectId(id),
+  });
+
+  if (deleteResult.deletedCount === 0) {
+    return false;
+  }
+
   return true;
 }
 
