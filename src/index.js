@@ -1,21 +1,30 @@
+require("dotenv").config();
+
 const express = require("express");
 const productRouter = require("./product/product.router");
+const { connectToDatabase } = require("./db/database.helper");
 
-const app = express();
+async function main() {
+  await connectToDatabase();
 
-app.use(express.json());
+  const app = express();
 
-const port = 3000;
+  app.use(express.json());
 
-// Main Endpoint
-app.get("/", function (req, res) {
-  // TODO: Improve
-  res.send("Hello World");
-});
+  const port = 3000;
 
-// Router Product
-app.use("/product", productRouter);
+  // Main Endpoint
+  app.get("/", function (req, res) {
+    // TODO: Improve
+    res.send("Hello World");
+  });
 
-app.listen(port, function () {
-  console.info(`App running on http://localhost:${port}`);
-});
+  // Router Product
+  app.use("/product", productRouter);
+
+  app.listen(port, function () {
+    console.info(`App running on http://localhost:${port}`);
+  });
+}
+
+main();
