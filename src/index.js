@@ -3,6 +3,8 @@ const productRouter = require("./product/product.router");
 
 const app = express();
 
+app.use(express.json());
+
 const port = 3000;
 
 // Main Endpoint
