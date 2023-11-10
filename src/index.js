@@ -24,6 +24,8 @@ async function main() {
   app.get("/", function (req, res) {
     res.send({
       message: "Welcome to BackStore Inc. API",
+      doc: "/doc",
+      
     });
   });
 

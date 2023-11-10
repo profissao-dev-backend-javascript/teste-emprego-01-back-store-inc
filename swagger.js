@@ -5,7 +5,8 @@ const doc = {
     title: "Teste Emprego 01: BackStore Inc",
     description: "API de Gerenciamento de Inventário",
   },
-  host: "https://friendly-space-enigma-wr7wpv995pww2rvg-3000.app.github.dev",
+  host: "teste-emprego-01-back-store-inc.onrender.com",
+  schemes: ["https"],
 };
 
 const outputFile = "./swagger-output.json";

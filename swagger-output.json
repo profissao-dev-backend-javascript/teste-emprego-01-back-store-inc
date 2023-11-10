@@ -5,10 +5,10 @@
     "description": "API de Gerenciamento de Inventário",
     "version": "1.0.0"
   },
-  "host": "https://friendly-space-enigma-wr7wpv995pww2rvg-3000.app.github.dev",
+  "host": "teste-emprego-01-back-store-inc.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
